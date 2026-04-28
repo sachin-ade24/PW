@@ -1,0 +1,28 @@
+=====================================================Playwright Basics=======================================================
+
+1. Playwright provides:
+
+    - chromium: prtocol/engine --> chrome, ms edge, opera, brave, chromium(Chrome For Testing --> CFT)
+    - firefox: own cutom firefox binary/protocol -- custom firefox
+    - safari: webkit engine: custom webkit binary to lauch safari --> mac, windows, linux
+
+
+2. Setup VS code with Playwright
+
+    - Node JS
+
+3. There are two ways to write playwright based scripts:
+    - Using the test runner (Everything will be done by using playwright.config file) --> better approach
+      headed, headless, test data, screenshot, videos etc. (We don't need to work on launching browser)
+    - Without test runner --> Using IIFE (Immediately Invoked Function Expression --> an anonymus function)
+      launch browser, page, steps, assertions, close
+
+4. Architecture of the Playwright:
+
+
+=====================================================Test Execution Commands=======================================================
+
+1. For all tests in headless: npx playwright test
+1. A specific test on all browsers: npx playwright test "relative path of your file"
+2. A specific test on google chrome: npx playwright test -g "fileName.spec" --project=chromium
+
