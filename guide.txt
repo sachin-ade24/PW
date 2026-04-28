@@ -19,10 +19,23 @@
 
 4. Architecture of the Playwright:
 
+5. If we comment project array in the playwright.config.ts and execute the test, playwright will run the test on CFT (Chrome For Testing).
+
 
 =====================================================Test Execution Commands=======================================================
 
 1. For all tests in headless: npx playwright test
 1. A specific test on all browsers: npx playwright test "relative path of your file"
 2. A specific test on google chrome: npx playwright test -g "fileName.spec" --project=chromium
+3. Execute test without test-runner with tsx: npx tsx "fileName.spec"
+4. Execute test without test-runner with ts-node: npx ts-node "fileName.spec"
 
+============================================Communication between Playwright and node.js===========================================
+
+For windows:
+cmd --> set DEBUG=pw:protocol && npx playwright test 'fileName'
+powershell --> $env:DEBUG="pw:protocol"; npx playwright test 'fileName'
+
+for saving logs:
+cmd --> set DEBUG=pw:protocol && npx playwright test googleTest.spec > log.txt
+powershell --> $env:DEBUG="pw:protocol"; npx playwright test googleTest.spec > log.txt

@@ -14,6 +14,9 @@ test('google test1', async ({page}) => {
     await searchBox.fill('playwright');
     await page.keyboard.press('Enter');
 
+    //This is a static wait and please try to avoid using it for your project
+    await page.waitForTimeout(2000);
+
 });
 
 //Destructuring with browser parameter:
@@ -30,6 +33,9 @@ test('google test2', async ({browser}) => {
     await searchBox.click();
     await searchBox.fill('playwright');
     await page.keyboard.press('Enter');
+
+    //This is a static wait and please try to avoid using it for your project
+    await page.waitForTimeout(2000);
 
 });
 
@@ -59,5 +65,7 @@ test('google test3', async () => {
     await searchBox.fill('playwright');
     await page.keyboard.press('Enter');
 
+    //This is a static wait and please try to avoid using it for your project
+    await page.waitForTimeout(2000);
 });
 
