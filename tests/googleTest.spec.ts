@@ -66,6 +66,9 @@ test('google test3', async () => {
     await page.keyboard.press('Enter');
 
     //This is a static wait and please try to avoid using it for your project
-    await page.waitForTimeout(2000);
+    //await page.waitForTimeout(2000);
+
+    //Use pause() for debugging and do not use for realtime projects framework:
+    await page.pause();
 });
 
