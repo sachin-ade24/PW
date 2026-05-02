@@ -26,8 +26,9 @@ export default defineConfig({
     trace: 'on-first-retry',
     headless: false,
     launchOptions: {
-      slowMo: 1000
-    }
+      slowMo: 2000
+    },
+    //testIdAttribute: 'data-test-id'
   },
 
   /* Configure projects for major browsers */
