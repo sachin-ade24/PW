@@ -39,3 +39,70 @@ powershell --> $env:DEBUG="pw:protocol"; npx playwright test 'fileName'
 for saving logs:
 cmd --> set DEBUG=pw:protocol && npx playwright test googleTest.spec > log.txt
 powershell --> $env:DEBUG="pw:protocol"; npx playwright test googleTest.spec > log.txt
+
+======================================Playwright Locator priority==================================================================
+
+1. getByRole: p1
+2. getByPlaceholder: p2
+3. getByAlt --> for images: p1 or p2
+4. getByLabel --> for labels: p1 or p2
+5. getByText --> for text: p1 or p2
+6. getByTestId --> for data-testid attribute: p3
+7. getByTitle --> for title attribute: p3
+
+===========================================XPath and CSS Selector==================================================================
+
+(I) XPath: is the address of the element in the HTML DOM
+
+    absolute XPath: never use it.
+
+    relative XPath: Create your own custom XPath. e.g. --> //htmlTag[@attr='value']
+
+    XPath priorities:
+    1. //htmlTag[@attr='value'] --> id 
+    - id --> e.g. //input[@id='input-firstname'] --> 1st
+    - name --> //input[@name="firstname"] --> 2nd
+    - placeholder --> //input[@placeholder="First Name"] --> 2nd
+    - class --> //div[@class='form-group required'] --> last (mostly will not give you 1 of 1 i.e. unique element)
+
+    2. Two or more XPaths can be used at the same time:
+    - //htmlTag1[@attr1='value']//htmlTag2[@attr2='value2']
+        in above XPath: 
+            1. attr1 may or may not be equal to attr2
+            2. htmlTag1 may or may not be equal to htmlTag2
+    - //htmlTag[@attr1='value1' and @att2='value2']
+    - //htmlTag[@attr1='value1' and @att2='value2' and @attr3='value3'] and so on..
+
+    3. text():
+    - //htmlTag[text()='yourText'] 
+        --> e.g.: header: //h1[text()='Register Account'], link example: //a[text()='Forgotten Password']
+        
+    4. contains():
+        //htmlTag[contains(@attr, 'attrValue')] or //htmlTag[contains(text(), 'yourText')]
+        e.g. //a[contains(text(), 'Forgotten Password')], //input[contains(@id, 'input-firstname')]
+
+    5. starts-with():
+        //htmlTag[starts-with(@attr, 'value')] or //htmlTag[startsWith(text(), 'yourText')]
+
+    6. paren to child:
+        Direct child: parentXPath/childXPath --> e.g.: //footer/div 
+        Direct and Indirect child: parentXPath//childXPath --> e.g.: //footer//a
+
+
+(II) CSS Selector: cascaded style sheet
+
+    - id: #idValue --> e.g.: '#input-firstname'
+    - class: .classValue --> e.g.: '.form-control'
+    - attribute based css selector --> e.g.: '[placeholder="Last Name"]', 'input[placeholder="Last Name"]'
+    - multiple css selectors --> e.g.: '[name="lastname"][placeholder="Last Name"]'
+    - text --> in jquery/cypress --> 'h1:contains('Register Account')'
+    - text in playwright --> use psuedo class
+
+
+===============================================================================================================================
+
+Difference between textContent() vs innerText():
+
+    textContent(): text with white spaces + any hidden text + extra blanks
+
+    innerText(): exact text (no unwanted blank spaces)
