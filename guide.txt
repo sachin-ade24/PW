@@ -106,3 +106,12 @@ Difference between textContent() vs innerText():
     textContent(): text with white spaces + any hidden text + extra blanks
 
     innerText(): exact text (no unwanted blank spaces)
+
+===============================================================================================================================
+
+Table Handling:
+
+1. table --> thead --> tr --> th
+       --> tbody --> tr --> td
+
+2. XPath: '/-->direct' and '//-->indirect'
