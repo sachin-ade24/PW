@@ -1,0 +1,29 @@
+
+{
+    "Users": [
+        {
+            "* First Name": "Admin",
+            "* Last Name": "Fool",
+            "* E-Mail": "admin@fool.com",
+            "* Telephone": "1234567890",
+            "* Password":"@dmIn",
+            "* Password Confirm": "@dmIn"
+        },
+        {
+            "* First Name": "QA",
+            "* Last Name": "Cool",
+            "* E-Mail": "qa@cool.com",
+            "*Telephone": "1020304050",
+            "* Password":"qa@qa",
+            "* Password Confirm": "qa@qa"            
+        },
+        {
+            "* First Name": "Dev",
+            "* Last Name": "Fool",
+            "* E-Mail": "dev@fool.com",
+            "*Telephone": "0123456789",
+            "* Password":"@deV",
+            "* Password Confirm": "@deV"         
+        }        
+    ]
+}
