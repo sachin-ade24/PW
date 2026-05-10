@@ -38,14 +38,22 @@ test('test2: shadow dom handling', async({page})=>{
 
 });
 
-test('test3: 2-level shadow dom handling', async({page})=>{
+test.only('test3: 2-level shadow dom handling', async({page})=>{
     await page.goto('https://naveenautomationlabs.com/opencart/ui/shadow-dom.html');
-    const outerShadowLocator: Locator = page.locator('outer-shadow-element');
-    const outerShadowTxt: string = await outerShadowLocator.getByText('Outer Shadow (Level 1)').innerText();
-    console.log(outerShadowTxt);
-    const innerShadowLocator: Locator = outerShadowLocator.locator('inner-shadow-element');
+
+    //outer shadow root:
+    // const outerShadowLocator: Locator = page.locator('outer-shadow-element');
+    // const outerShadowTxt: string = await outerShadowLocator.getByText('Outer Shadow (Level 1)').innerText();
+    // console.log(outerShadowTxt);
+
+    //inner shadow root:
+    // const innerShadowLocator: Locator = outerShadowLocator.locator('inner-shadow-element');
     // await innerShadowLocator.getByPlaceholder('Type inside nested shadow...').fill('TYpe inside nested shadow..');//valid
-    await innerShadowLocator.getByRole('textbox', {name: 'Type inside nested shadow...'}).fill('TYpe inside nested shadow..');
+    // await innerShadowLocator.getByRole('textbox', {name: 'Type inside nested shadow...'}).fill('TYpe inside nested shadow..');
+    
+    //No need to go shadow by shadow, we can directly reach the required locator by passing open shadow roots:
+    await page.getByRole('textbox', {name: 'Type inside nested shadow...'}).fill('TYpe inside nested shadow..');
+    await page.pause();
 });
 
 test('test4: 3-level shadow dom handling', async({page})=>{
@@ -89,7 +97,7 @@ test('test7: Shadow DOM Todo List', async({page})=>{
     }
 });
 
-test.only('testLast: Nested Shadow Dropdown', async({page})=>{
+test('testLast: Nested Shadow Dropdown', async({page})=>{
     await page.goto('https://naveenautomationlabs.com/opencart/ui/shadow-dom.html');
     await page.locator('#framework-select').scrollIntoViewIfNeeded();
     await page.locator('#framework-select').selectOption({label: 'Playwright'});
