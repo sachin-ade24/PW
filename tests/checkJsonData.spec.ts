@@ -29,6 +29,10 @@ test('test2: json data check', async({page})=>{
 users.Users.forEach((user)=>{
     test.only(`Registration for ${user["* First Name"]}`, async({page})=>{
         await page.goto('https://naveenautomationlabs.com/opencart/index.php?route=account/register');
+        console.log(users.Users[0]["* First Name"]);
+        for(let i=0; i<=users.Users.length; i++){
+            console.log(users.Users[i]);
+        };
         for(let [key, value] of Object.entries(user)){
             await page.getByLabel(key.replace('*', ''), {exact: true}).fill(String(value));
             await expect(page.getByLabel(key.replace('*', '').trim(), {exact: true})).toHaveValue(value);
