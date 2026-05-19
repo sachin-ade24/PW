@@ -41,7 +41,7 @@ import test from "@playwright/test";
 
 */
 
-test('test1', async({page})=>{
+test('test1: alert accept', async({page})=>{
     await page.goto('https://vinothqaacademy.com/alert-and-popup/');
 
     page.on('dialog', async dialog => {
@@ -57,7 +57,7 @@ test('test1', async({page})=>{
 
 });
 
-test('test2', async({page})=>{
+test('test2: alert dismiss', async({page})=>{
     await page.goto('https://vinothqaacademy.com/alert-and-popup/');
 
     page.on('dialog', async dialog => {
@@ -70,7 +70,7 @@ test('test2', async({page})=>{
     await page.getByRole('button', {name: 'Alert Box', exact: true}).click();
 });
 
-test('test3', async({page})=>{
+test('test3: confirm accept', async({page})=>{
     await page.goto('https://vinothqaacademy.com/alert-and-popup/');
 
     page.on('dialog', async dialog => {
@@ -84,7 +84,7 @@ test('test3', async({page})=>{
 
 });
 
-test('test4', async({page})=>{
+test('test4: confirm dismiss', async({page})=>{
     await page.goto('https://vinothqaacademy.com/alert-and-popup/');
 
     page.on('dialog', async dialog => {
@@ -98,7 +98,7 @@ test('test4', async({page})=>{
 
 });
 
-test('test5', async({page})=>{
+test('test5: prompt accept with text', async({page})=>{
     await page.goto('https://vinothqaacademy.com/alert-and-popup/');
 
     page.on('dialog', async dialog => {
