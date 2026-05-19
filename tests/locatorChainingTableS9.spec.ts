@@ -154,4 +154,3 @@ test.only('test5: table with chaining', async({page})=>{
         console.log(await page.locator('#customers tr', {has: page.locator('td')}).nth(i).innerText());
     };
 });
-
